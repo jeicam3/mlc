@@ -3,55 +3,49 @@
 #include "Tape.h"
 #include "Node.h"
 
-Node* add(Node* a, Node* b, Tape* tape) {
+Node* node_alloc(Node* left, Node* right, Tape* tape) {
     Node* result = malloc(sizeof(Node));
+
+    result->grad = 0;
+    result->left = left;
+    result->right = right;
+    tape_add(tape, result);
+
+    return result;
+}
+
+Node* node_add(Node* a, Node* b, Tape* tape) {
+    Node* result = node_alloc(a, b, tape);
 
     result->value = a->value + b->value;
-    result->grad = 0;
-    result->left = a;
-    result->right = b;
-
     result->operation = ADD;
-    tape_add(tape, result);
+
     return result;
 }
 
-Node* mul(Node* a, Node* b, Tape* tape) {
-    //może tutaj dać makro? - generalnie to będzie często powtarzający się kod i można to dać razem z zerowaniem grad bo to też będzie stałe
-    Node* result = malloc(sizeof(Node));
+Node* node_mul(Node* a, Node* b, Tape* tape) {
+    Node* result = node_alloc(a, b, tape);
 
     result->value = a->value * b->value;
-    result->grad = 0;
-    result->left = a;
-    result->right = b;
-
     result->operation = MUL;
-    tape_add(tape, result);
+
     return result;
 }
 
-Node* constant(double x, Tape* tape) {
-    Node* result = malloc(sizeof(Node));
+Node* node_constant(double x, Tape* tape) {
+    Node* result = node_alloc(NULL, NULL, tape);
 
     result->value = x;
-    result->grad = 0;
-    result->left = NULL;
-    result->right = NULL;
-
     result->operation = CONSTANT;
-    tape_add(tape, result);
+    
     return result;
 }
 
-Node* relu(Node* x, Tape* tape) {
-    Node* result = malloc(sizeof(Node));
+Node* node_relu(Node* x, Tape* tape) {
+    Node* result = node_alloc(x, NULL, tape);
     
     result->value = x->value > 0 ? x->value : 0;
-    result->grad = 0;
-    result->left = x;
-    result->right = NULL;
-
     result->operation = RELU;
-    tape_add(tape, result);
+
     return result;
 }

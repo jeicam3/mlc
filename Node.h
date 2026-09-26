@@ -10,7 +10,8 @@ typedef struct Node {
     struct Node* right;
 } Node; 
 
-Node* add(Node* a, Node* b, Tape* tape);
-Node* mul(Node* a, Node* b, Tape* tape);
-Node* constant(double x, Tape* tape);
-Node* relu(Node* x, Tape* tape);
+Node* node_alloc(Node* left, Node* right, Tape* tape);
+Node* node_add(Node* a, Node* b, Tape* tape);
+Node* node_mul(Node* a, Node* b, Tape* tape);
+Node* node_constant(double x, Tape* tape);
+Node* node_relu(Node* x, Tape* tape);
