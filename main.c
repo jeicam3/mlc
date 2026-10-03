@@ -94,6 +94,7 @@ int main() {
         printf("%.1f ^ %.1f = %f (actual: %.1f)\n", x1->value, x2->value, output->value, y_true->value);
     }
 
+    graph_print(graph);
     graph_free(graph);
     return 0;
 }

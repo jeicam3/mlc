@@ -81,3 +81,7 @@ void graph_zero_grads(Graph* graph) {
         graph->ptrs[i]->grad = 0.0;
     }
 }
+
+void graph_print(Graph* graph) {
+    node_print(GRAPH_ROOT(graph), 0);
+}

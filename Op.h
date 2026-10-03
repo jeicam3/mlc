@@ -7,3 +7,5 @@ typedef enum {
     MUL,
     RELU
 } Op;
+
+const char* op_to_str(Op op);

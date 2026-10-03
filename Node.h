@@ -17,3 +17,4 @@ Node* node_sub(Node* a, Node* b, Graph* graph);
 Node* node_mul(Node* a, Node* b, Graph* graph);
 Node* node_constant(double x, Graph* graph);
 Node* node_relu(Node* x, Graph* graph);
+void node_print(Node* node, int depth);

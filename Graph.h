@@ -16,3 +16,4 @@ void graph_add(Graph* graph, Node* node);
 void graph_backward(Graph* graph);
 void graph_forward(Graph* graph);
 void graph_zero_grads(Graph* graph);
+void graph_print(Graph* graph);
