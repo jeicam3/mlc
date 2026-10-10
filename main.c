@@ -1,7 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "Graph.h"
-#include "Node.h"
+#define MLC_IMPLEMENTATION
+
+#include "mlc.h"
 
 double rand_weight() {
     return ((double)rand() / RAND_MAX) * 2.0 - 1.0;
